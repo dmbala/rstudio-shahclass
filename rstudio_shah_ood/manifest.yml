@@ -1,0 +1,11 @@
+---
+name: RStudio Server - Shah Class
+category: Interactive Apps
+subcategory: Servers
+role: batch_connect
+description: |
+  This app will launch [RStudio Server for Shah Class] an IDE for [R] on the [Didact cluster]
+
+  [RStudio Server - Shah Class]: https://www.rstudio.com/products/rstudio-server/
+  [R]: https://www.r-project.org/
+  [Didact cluster]: https://to/be/added
