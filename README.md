@@ -9,6 +9,6 @@ To use singularity, pull
 ### Files and scripts
 Files to build the image and OOD app interface are listed under the following directories
 
--BuildFiles		
--rstudio_shah_ood
+*BuildFiles		
+*rstudio_shah_ood
 
