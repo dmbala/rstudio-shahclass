@@ -1,0 +1,24 @@
+[prs114@didact genetics303]$ tree
+.
+├── assignments
+│   ├── feedback
+│   ├── release
+│   ├── source
+│   │   └── assignment01
+│   └── submitted
+├── lectures
+│   └── lecture01
+├── source
+└── students_file.txt
+
+And students tree would be (this has less guidance from nbgrader): 
+
+[jsf149@didact ~]$ tree
+.
+├── assignments
+│   └── assignment01
+│       ├── feedback
+│       └── submission
+└── lectures
+    └── lecture01
+

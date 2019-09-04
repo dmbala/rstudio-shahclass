@@ -1,0 +1,3 @@
+Edit crontab using  crontab -e and enter the following
+
+0 2 * * * /home/bd387/bin/backup_gen303.sh > /tmp/backup_gen303.out 2>/tmp/backup_gen303.err
