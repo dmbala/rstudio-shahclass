@@ -1,0 +1,10 @@
+---
+name: Gen303 - RStudio 
+category: Interactive Apps
+subcategory: Servers
+role: batch_connect
+description: |
+  This app will launch [RStudio Server for Teaching] 
+
+  [RStudio Server - Teaching]: https://www.rstudio.com/products/rstudio-server/
+  [R]: https://www.r-project.org/

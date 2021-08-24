@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+module load singularity
+for var in ${!RSTUDIO_SINGULARITY_*}; do
+  export SINGULARITY_${var#RSTUDIO_SINGULARITY_}="${!var}"
+done
+export SINGULARITY_WORKDIR="${SINGULARITY_WORKDIR:-$(mktemp -d)}"
+
+echo "SINGULARITY_WORKDIR"
+echo "$SINGULARITY_WORKDIR"
+
+echo "SINGULARITY_BIND"
+echo "$SINGULARITY_BIND"
+
+echo "at symbol"
+echo ${@}
+echo About to run -- exec singularity exec rserver "${@}"
+#exec singularity exec -B $(mktemp -d):/tmp  -B projects  $SINGULARITY_IMAGE /usr/lib/rstudio-server/bin/rserver "${@}"
+singularity -v -d exec  $SINGULARITY_IMAGE /usr/lib/rstudio-server/bin/rserver "${@}"
+

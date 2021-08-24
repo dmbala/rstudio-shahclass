@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+module load singularity
+
+#for var in ${!RSTUDIO_SINGULARITY_*}; do
+#  export SINGULARITY_${var#RSTUDIO_SINGULARITY_}="${!var}"
+#done
+#export SINGULARITY_WORKDIR="${SINGULARITY_WORKDIR:-$(mktemp -d)}"
+
+SINGULARITY_IMAGE=/projects/community/classes/genetics/gen303/container/rstudio_shahclass/shahclass.sif
+#SINGULARITY_IMAGE=/projects/community/classes/genetics/gen303/container/rstudio_shahclass/shahclass3.6_2020.sif
+TMPDIR=/scratch/$USER/rstudio_server_tmp_xdir
+mkdir -p $TMPDIR 
+SERVER_DATA_DIR=$TMPDIR 
+mkdir -p ${SERVER_DATA_DIR}/var/{lib,run}
+chmod a+rw ${SERVER_DATA_DIR}/var/run
+chmod +t ${SERVER_DATA_DIR}/var/run
+
+BINDS=/scratch,/cache,/projectsp,/projectsn,/projectsc,${SERVER_DATA_DIR}/var/lib:/var/lib/rstudio-server,${SERVER_DATA_DIR}/var/run:/var/run/rstudio-server
+
+echo About to run -- exec singularity exec rserver "${@}"
+exec singularity exec -B $(mktemp -d):/tmp -B $BINDS -B /opt/sw $SINGULARITY_IMAGE rserver "${@}"
+#exec singularity exec -B $(mktemp -d):/tmp -B /cache -B /projectsp -B /projectsc -B /projectsn -B /opt/sw $SINGULARITY_IMAGE rserver "${@}"

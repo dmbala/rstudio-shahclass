@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+
+echo About to exec rserver "${@}"
+
+/projects/community/py-image/2019.10A/bd387/envs/RStudio/bin/rstudio "${@}"

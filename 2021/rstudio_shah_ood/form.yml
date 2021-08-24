@@ -1,0 +1,48 @@
+---
+cluster: "amarel"
+attributes:
+  bc_num_cores:
+    widget: "number_field"
+    label: "Number of cores"
+    value: 4
+    help: "Number of cores (2 is good)"
+    min: 1
+    max: 8
+    step: 1
+  bc_mem:
+    widget: "number_field"
+    label: "Memory in GB (4GB is good, you can't get more than 24GB) "
+    value: 16 
+    help: |
+      Mem in GB 
+    min: 4
+    max: 24 
+    step: 1
+  slurm_special1:
+    widget: "text_field"
+    label: "extra slurm options"
+    value: "--reservation=gen303-Tues or --job-name=myjob"
+    help: |
+       Should NOT be empty. e.g. --reservation=gen303-Tues (gen303-Thurs) or --job-name=myjob  
+  slurm_special2:
+    widget: "text_field"
+    label: "extra slurm options"
+    value: "--constraint=slepner"
+    help: |
+      Enter additional requirements. (no extra spaces allowed)
+  slurm_special3:
+    widget: "text_field"
+    label: "extra slurm options"
+    value: "--export=ALL"
+    help: |
+      Enter additional requirements. (no extra spaces allowed)
+form:
+  - bc_queue
+  - bc_num_hours
+  - num_cores
+  - bc_mem
+  - slurm_special1
+#  - slurm_special2
+#  - slurm_special3
+  - bc_email_on_started
+

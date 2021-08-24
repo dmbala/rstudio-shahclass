@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+module load singularity/3.1.0
+
+for var in ${!RSTUDIO_SINGULARITY_*}; do
+  export SINGULARITY_${var#RSTUDIO_SINGULARITY_}="${!var}"
+done
+export SINGULARITY_WORKDIR="${SINGULARITY_WORKDIR:-$(mktemp -d)}"
+
+echo About to run -- exec singularity exec rserver "${@}"
+exec singularity exec -B $(mktemp -d):/tmp -B /cache -B /projectsp -B /projectsc -B /projectsn -B /opt/sw $SINGULARITY_IMAGE rserver "${@}"

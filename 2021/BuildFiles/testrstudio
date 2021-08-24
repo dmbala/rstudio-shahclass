@@ -1,0 +1,33 @@
+############################################################
+# Dockerfile to build bunch of r packages
+############################################################
+
+## 'R-base' Debian-based image
+##FROM rocker/r-base:latest
+##FROM rocker/rstudio-stable:latest
+
+# File Author / Maintainer
+
+FROM rocker/rstudio:4.0.5
+ 
+MAINTAINER Bala Desinghu <dmbala@gmail.com>
+ 
+RUN apt-get clean all && \
+  apt-get update && \
+  apt-get upgrade -y && \
+  apt-get install -y \
+    libhdf5-dev \
+    libcurl4-gnutls-dev \
+    libssl-dev \
+    libxml2-dev \
+    libpng-dev \
+    libxt-dev \
+    zlib1g-dev \
+    libbz2-dev \
+    liblzma-dev \
+    libglpk40 \
+    libgit2-28 \
+  && apt-get clean all && \
+  apt-get purge && \
+
+

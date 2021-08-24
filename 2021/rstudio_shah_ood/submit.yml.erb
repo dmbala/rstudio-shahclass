@@ -1,0 +1,18 @@
+---
+batch_connect:
+#  header: |
+#    module use /projects/community/modulefiles
+#    module load singularity/3.1.0
+#    export PATH=/projects/community/containers/bin:$PATH
+#    export WEBSOCKIFY_CMD=/projects/community/containers/bin/websockify
+  template: "basic"
+script:
+  native:
+    - "--clusters=amarel"
+    - "-c"
+    - "<%= num_cores.blank? ? 1 : num_cores.to_i %>"
+    - "--mem=<%= bc_mem %>G"
+    - "<%= slurm_special1 %>"
+
+
+

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# Log all output from this script
+export RSESSION_LOG_FILE="//cache/home/bd387/ondemand/data/sys/dashboard/batch_connect/sys/gen303_rstudio/output/2c1cb825-e4a9-43d1-8999-6df1eb5661c0/rsession.log"
+exec &>>"${RSESSION_LOG_FILE}"
+export R_LIB_USER="/projects/community/py-image/2019.10A/bd387/anaconda3-intel17/envs/shahclass/lib/R/library"
+# Launch the original command
+echo "Launching rsession..."
+set -x
+exec rsession --r-libs-user "" "${@}"
